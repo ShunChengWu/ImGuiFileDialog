@@ -814,11 +814,11 @@ bool ImGuiFileDialog::FileDialog(const std::string& vKey, ImGuiWindowFlags vFlag
 			{
 				if (IMGUI_BUTTON(okButtonString))
 				{
-					if ('\0' != FileNameBuffer[0])
-					{
+//					if ('\0' != FileNameBuffer[0])
+//					{
 						IsOk = true;
 						res = true;
-					}
+//					}
 				}
 
 				ImGui::SameLine();
