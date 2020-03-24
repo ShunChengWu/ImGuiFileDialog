@@ -875,13 +875,13 @@ std::string ImGuiFileDialog::GetCurrentFileName()
 {
 	std::string result = FileNameBuffer;
 
-	size_t lastPoint = result.find_last_of('.');
-	if (lastPoint != std::string::npos)
-	{
-		result = result.substr(0, lastPoint);
-	}
-
-	result += m_SelectedExt;
+//	size_t lastPoint = result.find_last_of('.');
+//	if (lastPoint != std::string::npos)
+//	{
+//		result = result.substr(0, lastPoint);
+//	}
+//
+//	result += m_SelectedExt;
 
 	return result;
 }
@@ -965,7 +965,7 @@ bool ImGuiFileDialog::SelectDirectory(const FileInfoStruct& vInfos)
 #ifdef LINUX
 			if (s_fs_root == m_CurrentPath)
 			{
-				newPath = m_CurrentPath + infos.fileName;
+				newPath = m_CurrentPath + vInfos.fileName;
 			}
 			else
 			{
@@ -1170,13 +1170,16 @@ void ImGuiFileDialog::ScanDir(const std::string& vPath)
 	std::string		path = vPath;
 
 #if defined(UNIX) // UNIX is LINUX or APPLE
-	if (path.size() > 0)
+	if (!path.empty())
 	{
 		if (path[0] != PATH_SEP)
 		{
-			//path = PATH_SEP + path;
+//			path = PATH_SEP + path;
 		}
 	}
+//	else if (vPath.empty()){
+//	    path = ".";
+//	}
 #endif
 
 	if (m_CurrentPath_Decomposition.empty())
