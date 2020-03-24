@@ -730,7 +730,7 @@ bool ImGuiFileDialog::FileDialog(const std::string& vKey, ImGuiWindowFlags vFlag
 
 					if (ImGui::Selectable(str.c_str(), selected))
 					{
-						if (infos.type == 'd')
+						if (infos.type == 'd' && m_SelectedFileNames.find(infos.fileName) != m_SelectedFileNames.end())
 						{
 							pathClick = SelectDirectory(infos);
 						}
@@ -875,6 +875,10 @@ std::string ImGuiFileDialog::GetCurrentFileName()
 {
 	std::string result = FileNameBuffer;
 
+	if(result.find(".dir") != std::string::npos){
+        const size_t lastPoint = result.find_last_of('.');
+        result = result.substr(0, lastPoint);
+	}
 //	size_t lastPoint = result.find_last_of('.');
 //	if (lastPoint != std::string::npos)
 //	{
