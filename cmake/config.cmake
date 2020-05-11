@@ -45,6 +45,8 @@ macro(make_executable)
     add_executable(${PROJECT} ${SOURCES} ${IMGUIFILEDIALOG})
 
     add_definitions(${GLFW_DEFINITIONS})
+
+    SET_TARGET_PROPERTIES(${PROJECT} PROPERTIES CXX_STANDARD 11)
     
     set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/bundle/${PROJECT}")
     install(
