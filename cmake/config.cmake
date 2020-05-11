@@ -60,6 +60,7 @@ macro(make_library)
     target_include_directories(${PROJECT} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
     set_target_properties(${PROJECT} PROPERTIES FOLDER Libraries)
+    SET_TARGET_PROPERTIES(${PROJECT} PROPERTIES CXX_STANDARD 11)
 
     include_directories(
         ${GLM_INCLUDE_DIR}
